@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sorteo de Números Aleatorios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, mediumpurple, lightpink); /* Fondo degradado */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: powderblue,255, 255, 0.8); /* Fondo blanco semitransparente */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: black; /* Color del texto */
+        }
+
+        #logo {
+            width: 300px; /* Tamaño del logotipo */
+            height: 300px;
+            margin: 30px auto;
+            display: block;
+        }
+
+        #number {
+            font-size: 48px; /* Tamaño del número */
+            color: ´mediumpurple; /* Color del número */
+        }
+
+        #button-container {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: mediumpurple; /* Color de fondo del botón */
+            color: #fff; /* Color del texto del botón */
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sorteo de Números Aleatorios</h1>
+        <a href="https://isanagustin.edu.pe/portal/" target="_blank"> <!-- Enlace a la página de la institución -->
+            <img src="logo1.png" alt="Logo" id="logo">
+        </a>
+        <p>Número sorteado:</p>
+        <p id="number">0</p>
+        <div id="button-container">
+            <button id="startButton">Iniciar</button>
+            <button id="stopButton" disabled>Detener</button>
+        </div>
+    </div>
+
+    <script>
+        let intervalId;
+
+        document.getElementById('startButton').addEventListener('click', () => {
+            document.getElementById('stopButton').removeAttribute('disabled');
+            document.getElementById('startButton').setAttribute('disabled', 'disabled');
+            intervalId = setInterval(() => {
+                const randomNumber = Math.floor(Math.random() * 31); // Números del 0 al 30
+                document.getElementById('number').textContent = randomNumber;
+            }, 100);
+        });
+
+        document.getElementById('stopButton').addEventListener('click', () => {
+            clearInterval(intervalId);
+            document.getElementById('startButton').removeAttribute('disabled');
+            document.getElementById('stopButton').setAttribute('disabled', 'disabled');
+        });
+    </script>
+</body>
+</html>
+
